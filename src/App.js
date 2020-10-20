@@ -27,6 +27,7 @@ function App() {
         handleErrors(response);
         try {
           const data = await response.json();
+          data.sort((a, b) => (a.name < b.name ? -1 : 1));
           setRestaurants(data);
         } catch (error) {
           console.error(error);
