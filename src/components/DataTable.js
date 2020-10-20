@@ -7,13 +7,28 @@ export const DataTable = ({ restaurants, states, genres }) => {
   const [searchInput, setSearchInput] = useState("");
   const [searchFilter, setSearchFilter] = useState("");
 
+  const filterRestaurantByState = (restaurant) => {
+    return restaurant.state.includes(stateFilter);
+  };
+
+  const filterRestaurantByGenre = (restaurant) => {
+    return (
+      restaurant.tags.split(",").includes(genreFilter) || genreFilter === ""
+    );
+  };
+
+  const filterRestaurantBySearchTerm = (restaurant) => {
+    return (
+      restaurant.name.toLowerCase().includes(searchFilter) ||
+      restaurant.city.toLowerCase().includes(searchFilter) ||
+      restaurant.tags.toLowerCase().includes(searchFilter)
+    );
+  };
+
   const filteredRows = (restaurants) => {
     const filteredRows = restaurants
-      .filter((restaurant) => restaurant.state.includes(stateFilter))
-      .filter(
-        (restaurant) =>
-          restaurant.tags.split(",").includes(genreFilter) || genreFilter === ""
-      )
+      .filter((restaurant) => filterRestaurantByState(restaurant))
+      .filter((restaurant) => filterRestaurantByGenre(restaurant))
       .filter((restaurant) => filterRestaurantBySearchTerm(restaurant))
       .map((restaurant) => (
         <tr key={restaurant.id}>
@@ -47,14 +62,6 @@ export const DataTable = ({ restaurants, states, genres }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchFilter(searchInput);
-  };
-
-  const filterRestaurantBySearchTerm = (restaurant) => {
-    return (
-      restaurant.name.toLowerCase().includes(searchFilter) ||
-      restaurant.city.toLowerCase().includes(searchFilter) ||
-      restaurant.tags.toLowerCase().includes(searchFilter)
-    );
   };
 
   return (
