@@ -1,6 +1,11 @@
 .restaurant-datatable {
-  border-collapse: collapse;
   margin: 50px auto;
+  text-align: center;
+}
+
+.restaurant-datatable table {
+  border-collapse: collapse;
+  margin: 20px auto;
   min-width: 1000px;
   border-radius: 5px;
   overflow: hidden;
@@ -37,7 +42,7 @@
   border-bottom: 2px solid var(--main-color);
 }
 
-.restaurant-datatable tbody td:first-child {
+.restaurant-datatable tbody td:first-child:not(.no-results) {
   font-weight: bold;
 }
 
@@ -51,4 +56,8 @@
 
 .large-column {
   width: 40%;
+}
+
+label {
+  margin-right: 5px;
 }

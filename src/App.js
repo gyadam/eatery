@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "./components/Table";
+import { DataTable } from "./components/DataTable";
 import "./css/app.css";
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
         <h2>Eat. Sleep. Order. Repeat.</h2>
       </header>
       <main>
-        <Table restaurants={restaurants} />
+        <DataTable restaurants={restaurants} />
       </main>
     </div>
   );
