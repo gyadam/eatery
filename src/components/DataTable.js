@@ -4,6 +4,8 @@ import "../css/table.css";
 export const DataTable = ({ restaurants, states, genres }) => {
   const [stateFilter, setStateFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [searchFilter, setSearchFilter] = useState("");
 
   const filteredRows = (restaurants) => {
     const filteredRows = restaurants
@@ -12,6 +14,7 @@ export const DataTable = ({ restaurants, states, genres }) => {
         (restaurant) =>
           restaurant.tags.split(",").includes(genreFilter) || genreFilter === ""
       )
+      .filter((restaurant) => filterRestaurantBySearchTerm(restaurant))
       .map((restaurant) => (
         <tr key={restaurant.id}>
           <td>{restaurant.name}</td>
@@ -34,8 +37,39 @@ export const DataTable = ({ restaurants, states, genres }) => {
     return filteredRows.length > 0 ? filteredRows : noResults;
   };
 
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+    if (e.target.value === "") {
+      setSearchFilter("");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchFilter(searchInput);
+  };
+
+  const filterRestaurantBySearchTerm = (restaurant) => {
+    return (
+      restaurant.name.toLowerCase().includes(searchFilter) ||
+      restaurant.city.toLowerCase().includes(searchFilter) ||
+      restaurant.tags.toLowerCase().includes(searchFilter)
+    );
+  };
+
   return (
     <div className="restaurant-datatable">
+      <form className="search-box" onSubmit={handleSubmit}>
+        <label for="site-search">Search for restaurants:</label>
+        <input
+          type="search"
+          id="restaurant-search"
+          name="search"
+          value={searchInput}
+          onChange={handleChange}
+        ></input>
+        <button>Search</button>
+      </form>
       <div className="filter-container">
         <label for="state-filter">Choose a state:</label>
         <select
