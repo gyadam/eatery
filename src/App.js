@@ -49,7 +49,7 @@ function App() {
         <h2>Eat. Sleep. Order. Repeat.</h2>
       </header>
       <main>
-        <Table />
+        <Table restaurants={restaurants} />
       </main>
     </div>
   );

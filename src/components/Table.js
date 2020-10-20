@@ -1,9 +1,16 @@
 import React from "react";
 import "../css/table.css";
 
-export const Table = () => {
+export const Table = ({ restaurants }) => {
   return (
     <table className="restaurant-datatable">
+      <colgroup>
+        <col class="auto-column" />
+        <col class="auto-column" />
+        <col class="small-column" />
+        <col class="auto-column" />
+        <col class="large-column" />
+      </colgroup>
       <thead>
         <tr>
           <th>Name</th>
@@ -14,27 +21,15 @@ export const Table = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Old Hickory Steakhouse</td>
-          <td>Oxon Hill</td>
-          <td>MD</td>
-          <td>(301) 965-4000</td>
-          <td>Social, Food and Dining, Restaurants, Steakhouses</td>
-        </tr>
-        <tr>
-          <td>Old Hickory Steakhouse</td>
-          <td>Oxon Hill</td>
-          <td>MD</td>
-          <td>(301) 965-4000</td>
-          <td>Social, Food and Dining, Restaurants, Steakhouses</td>
-        </tr>
-        <tr>
-          <td>Old Hickory Steakhouse</td>
-          <td>Oxon Hill</td>
-          <td>MD</td>
-          <td>(301) 965-4000</td>
-          <td>Social, Food and Dining, Restaurants, Steakhouses</td>
-        </tr>
+        {restaurants.map((restaurant) => (
+          <tr key={restaurant.id}>
+            <td>{restaurant.name}</td>
+            <td>{restaurant.city}</td>
+            <td>{restaurant.state}</td>
+            <td>{restaurant.telephone}</td>
+            <td>{restaurant.tags}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

@@ -5,6 +5,8 @@
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  table-layout: fixed;
+  width: 80%;
 }
 
 .restaurant-datatable th,
@@ -37,4 +39,16 @@
 
 .restaurant-datatable tbody td:first-child {
   font-weight: bold;
+}
+
+.auto-column {
+  width: auto;
+}
+
+.small-column {
+  width: 10%;
+}
+
+.large-column {
+  width: 40%;
 }
