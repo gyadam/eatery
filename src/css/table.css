@@ -1,0 +1,40 @@
+.restaurant-datatable {
+  border-collapse: collapse;
+  margin: 50px auto;
+  min-width: 1000px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-datatable th,
+.restaurant-datatable td {
+  padding: 12px 15px;
+}
+
+.restaurant-datatable th {
+  font-weight: bold;
+  background-color: var(--main-color);
+  color: white;
+  text-align: center;
+}
+
+.restaurant-datatable td {
+  text-align: center;
+}
+
+.restaurant-datatable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.restaurant-datatable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.restaurant-datatable tbody tr:last-of-type {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.restaurant-datatable tbody td:first-child {
+  font-weight: bold;
+}
