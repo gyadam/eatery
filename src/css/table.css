@@ -107,3 +107,7 @@ label {
   border-width: 1px;
   border-radius: 3px;
 }
+
+.search-filter-container div:last-child {
+  margin-right: 1px;
+}
