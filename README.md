@@ -3,7 +3,7 @@
 This project is a simple restaurant search app where users can:
 * view a paginated list of restaurants fetched from an API
 * filter the restaurants by State and Genre
-* search for restaurants using a searchbox
+* search for restaurants using a search bar
 
 The application is live at:
 
