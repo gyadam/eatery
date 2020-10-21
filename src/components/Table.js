@@ -16,10 +16,10 @@ export const Table = ({ paginatedRestaurants, error }) => {
       return restaurants.map((restaurant) => (
         <tr key={restaurant.id}>
           <td>{restaurant.name}</td>
-          <td>{restaurant.city}</td>
+          <td>{splitCommaSeparatedWords(restaurant.city)}</td>
           <td>{restaurant.state}</td>
           <td>{restaurant.telephone}</td>
-          <td>{restaurant.tags}</td>
+          <td>{splitCommaSeparatedWords(restaurant.tags)}</td>
         </tr>
       ));
     } else {
@@ -32,6 +32,10 @@ export const Table = ({ paginatedRestaurants, error }) => {
         </tr>
       );
     }
+  };
+
+  const splitCommaSeparatedWords = (tags) => {
+    return tags.split(",").join(", ");
   };
 
   return (
