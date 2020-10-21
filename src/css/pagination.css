@@ -1,0 +1,15 @@
+.pagination-container {
+  margin: 10px;
+}
+
+.pagination-container ul {
+  display: inline;
+  padding: 0;
+}
+
+.pagination-container li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

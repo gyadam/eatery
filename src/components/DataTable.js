@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Pagination } from "./Pagination";
 import "../css/table.css";
 
 export const DataTable = ({ restaurants, states, genres }) => {
@@ -6,6 +7,18 @@ export const DataTable = ({ restaurants, states, genres }) => {
   const [genreFilter, setGenreFilter] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [searchFilter, setSearchFilter] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const resultsPerPage = 10;
+
+  const handleStateFilterChange = (e) => {
+    setCurrentPage(1);
+    setStateFilter(e.target.value);
+  };
+
+  const handleGenreFilterChange = (e) => {
+    setCurrentPage(1);
+    setGenreFilter(e.target.value);
+  };
 
   const filterRestaurantByState = (restaurant) => {
     return restaurant.state.includes(stateFilter);
@@ -25,31 +38,13 @@ export const DataTable = ({ restaurants, states, genres }) => {
     );
   };
 
-  const filteredRows = (restaurants) => {
-    const filteredRows = restaurants
+  const filterResults = (restaurants) => {
+    const filteredResults = restaurants
       .filter((restaurant) => filterRestaurantByState(restaurant))
       .filter((restaurant) => filterRestaurantByGenre(restaurant))
-      .filter((restaurant) => filterRestaurantBySearchTerm(restaurant))
-      .map((restaurant) => (
-        <tr key={restaurant.id}>
-          <td>{restaurant.name}</td>
-          <td>{restaurant.city}</td>
-          <td>{restaurant.state}</td>
-          <td>{restaurant.telephone}</td>
-          <td>{restaurant.tags}</td>
-        </tr>
-      ));
+      .filter((restaurant) => filterRestaurantBySearchTerm(restaurant));
 
-    const noResults = (
-      <tr>
-        <td colSpan="5" className="no-results">
-          Sorry, it looks like there are no restaurants that match these
-          filters!
-        </td>
-      </tr>
-    );
-
-    return filteredRows.length > 0 ? filteredRows : noResults;
+    return filteredResults;
   };
 
   const handleChange = (e) => {
@@ -62,7 +57,40 @@ export const DataTable = ({ restaurants, states, genres }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchFilter(searchInput);
+    setCurrentPage(1);
   };
+
+  const paginateResults = (restaurants) => {
+    const indexOfLastResult = currentPage * resultsPerPage;
+    const indexOfFirstResult = indexOfLastResult - resultsPerPage;
+    return restaurants.slice(indexOfFirstResult, indexOfLastResult);
+  };
+
+  const generateRows = (restaurants) => {
+    if (restaurants.length > 0) {
+      return restaurants.map((restaurant) => (
+        <tr key={restaurant.id}>
+          <td>{restaurant.name}</td>
+          <td>{restaurant.city}</td>
+          <td>{restaurant.state}</td>
+          <td>{restaurant.telephone}</td>
+          <td>{restaurant.tags}</td>
+        </tr>
+      ));
+    } else {
+      return (
+        <tr>
+          <td colSpan="5" className="no-results">
+            Sorry, it looks like there are no restaurants that match these
+            filters!
+          </td>
+        </tr>
+      );
+    }
+  };
+
+  const filteredRestaurants = filterResults(restaurants);
+  const paginatedRestaurants = paginateResults(filteredRestaurants);
 
   return (
     <div className="restaurant-datatable">
@@ -82,7 +110,7 @@ export const DataTable = ({ restaurants, states, genres }) => {
         <select
           name="state"
           id="state-filter"
-          onChange={(e) => setStateFilter(e.target.value)}
+          onChange={handleStateFilterChange}
         >
           <option value="">All</option>
           {states.map((state) => (
@@ -95,7 +123,7 @@ export const DataTable = ({ restaurants, states, genres }) => {
         <select
           name="genre"
           id="genre-filter"
-          onChange={(e) => setGenreFilter(e.target.value)}
+          onChange={handleGenreFilterChange}
         >
           <option value="">All</option>
           {genres.map((genre) => (
@@ -103,6 +131,11 @@ export const DataTable = ({ restaurants, states, genres }) => {
           ))}
         </select>
       </div>
+      <Pagination
+        resultsPerPage={resultsPerPage}
+        totalResults={filteredRestaurants.length}
+        setCurrentPage={setCurrentPage}
+      />
       <table>
         <colgroup>
           <col class="auto-column" />
@@ -120,7 +153,7 @@ export const DataTable = ({ restaurants, states, genres }) => {
             <th>Genres</th>
           </tr>
         </thead>
-        <tbody>{filteredRows(restaurants, stateFilter)}</tbody>
+        <tbody>{generateRows(paginatedRestaurants)}</tbody>
       </table>
     </div>
   );
