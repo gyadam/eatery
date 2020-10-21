@@ -5,6 +5,7 @@ export const Pagination = ({
   resultsPerPage,
   totalResults,
   setCurrentPage,
+  currentPage,
 }) => {
   let pageNumbers = [];
 
@@ -17,7 +18,12 @@ export const Pagination = ({
       <ul>
         {pageNumbers.map((number) => (
           <li key={number}>
-            <button onClick={() => setCurrentPage(number)}>{number}</button>
+            <button
+              className={currentPage === number ? "active" : ""}
+              onClick={() => setCurrentPage(number)}
+            >
+              {number}
+            </button>
           </li>
         ))}
       </ul>
