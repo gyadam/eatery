@@ -71,9 +71,9 @@ function App() {
           At Eatery, we are revolutionizing the way people eat out. With our
           blockchain-based, decentralized network of restaurants and
           cutting-edge AI technology, we are aiming to build the world's first
-          scalable system and create a community of Eaters who all share the
-          same passion of searching for the finest restaurants. Check out our
-          cool new technology in the table below.
+          scalable restaurant search engine and create a community of Eaters who
+          all share the same passion of searching for the finest restaurants.
+          Check out our cool new technology in the table below.
         </h3>
       </header>
       <main>
