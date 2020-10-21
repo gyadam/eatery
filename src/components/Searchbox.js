@@ -6,7 +6,7 @@ export const Searchbox = ({ handleSubmit, searchInput, handleChange }) => {
       <label htmlFor="site-search"></label>
       <input
         type="search"
-        autocomplete="off"
+        autoComplete="off"
         id="restaurant-search"
         name="search"
         value={searchInput}
