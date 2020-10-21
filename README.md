@@ -19,7 +19,7 @@ You should see something like this:
 * React for the frontend UI
 * Heroku for deploying the app
 
-The project was bootstrapped with create-react-app. No third-party libraries were used for the filter/search/pagination features. Heroku was used to set up automatic deploys, which run every time a commit is pushed to the master branch of this repo.
+The project was bootstrapped with create-react-app. No third-party libraries were used for the filter/search/pagination features. Heroku was used to set up automatic deployment, which runs every time a commit is pushed to the master branch of this repo.
 
 ### Running the development server
 To run the application in your local environment, clone the repo and install dependencies:
