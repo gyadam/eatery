@@ -29,6 +29,7 @@
 
 .restaurant-datatable td {
   text-align: center;
+  height: 50px;
 }
 
 .restaurant-datatable tbody tr {
