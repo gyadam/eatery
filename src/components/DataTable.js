@@ -3,6 +3,8 @@ import { Pagination } from "./Pagination";
 import "../css/datatable.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Table } from "./Table";
+import { Filter } from "./Filter";
+import { Searchbox } from "./Searchbox";
 
 export const DataTable = ({ restaurants, states, genres, loading, error }) => {
   const [stateFilter, setStateFilter] = useState("");
@@ -83,44 +85,21 @@ export const DataTable = ({ restaurants, states, genres, loading, error }) => {
     <div className="restaurant-datatable">
       <div className="datatable-header">
         <div className="search-filter-container">
-          <form className="search-box" onSubmit={handleSubmit}>
-            <label for="site-search"></label>
-            <input
-              type="search"
-              id="restaurant-search"
-              name="search"
-              value={searchInput}
-              onChange={handleChange}
-              placeholder="Search for restaurants"
-            ></input>
-            <button>Search</button>
-          </form>
-          <div className="filter-container">
-            <label for="state-filter">Choose a state:</label>
-            <select
-              name="state"
-              id="state-filter"
-              onChange={handleStateFilterChange}
-            >
-              <option value="">All</option>
-              {states.map((state) => (
-                <option value={state.abbreviation}>{state.name}</option>
-              ))}
-            </select>
-          </div>
-          <div className="filter-container">
-            <label for="genre-filter">Choose a genre:</label>
-            <select
-              name="genre"
-              id="genre-filter"
-              onChange={handleGenreFilterChange}
-            >
-              <option value="">All</option>
-              {genres.map((genre) => (
-                <option value={genre}>{genre}</option>
-              ))}
-            </select>
-          </div>
+          <Searchbox
+            handleSubmit={handleSubmit}
+            searchInput={searchInput}
+            handleChange={handleChange}
+          />
+          <Filter
+            name="state"
+            values={states}
+            handleChange={handleStateFilterChange}
+          />
+          <Filter
+            name="genre"
+            values={genres}
+            handleChange={handleGenreFilterChange}
+          />
         </div>
       </div>
       <Table paginatedRestaurants={paginatedRestaurants} error={error}></Table>
