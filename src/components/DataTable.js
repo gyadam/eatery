@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Pagination } from "./Pagination";
-import "../css/table.css";
+import "../css/datatable.css";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Table } from "./Table";
 
-export const DataTable = ({ restaurants, states, genres, loading }) => {
+export const DataTable = ({ restaurants, states, genres, loading, error }) => {
   const [stateFilter, setStateFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -67,29 +68,6 @@ export const DataTable = ({ restaurants, states, genres, loading }) => {
     return restaurants.slice(indexOfFirstResult, indexOfLastResult);
   };
 
-  const generateRows = (restaurants) => {
-    if (restaurants.length > 0) {
-      return restaurants.map((restaurant) => (
-        <tr key={restaurant.id}>
-          <td>{restaurant.name}</td>
-          <td>{restaurant.city}</td>
-          <td>{restaurant.state}</td>
-          <td>{restaurant.telephone}</td>
-          <td>{restaurant.tags}</td>
-        </tr>
-      ));
-    } else {
-      return (
-        <tr>
-          <td colSpan="5" className="no-results">
-            Sorry, it looks like there are no restaurants that match these
-            filters!
-          </td>
-        </tr>
-      );
-    }
-  };
-
   const filteredRestaurants = filterResults(restaurants);
   const paginatedRestaurants = paginateResults(filteredRestaurants);
 
@@ -145,25 +123,7 @@ export const DataTable = ({ restaurants, states, genres, loading }) => {
           </div>
         </div>
       </div>
-      <table>
-        <colgroup>
-          <col class="auto-column" />
-          <col class="auto-column" />
-          <col class="small-column" />
-          <col class="auto-column" />
-          <col class="large-column" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Phone number</th>
-            <th>Genres</th>
-          </tr>
-        </thead>
-        <tbody>{generateRows(paginatedRestaurants)}</tbody>
-      </table>
+      <Table paginatedRestaurants={paginatedRestaurants} error={error}></Table>
       <Pagination
         resultsPerPage={resultsPerPage}
         totalResults={filteredRestaurants.length}

@@ -43,7 +43,7 @@
   border-bottom: 2px solid var(--main-color);
 }
 
-.restaurant-datatable tbody td:first-child:not(.no-results) {
+.restaurant-datatable tbody td:first-child:not(.no-results):not(.error-row) {
   font-weight: bold;
 }
 
