@@ -1,17 +1,17 @@
 .restaurant-datatable {
   margin: 50px auto;
   text-align: center;
+  width: 80%;
 }
 
 .restaurant-datatable table {
   border-collapse: collapse;
   margin: 20px auto;
-  min-width: 1000px;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   table-layout: fixed;
-  width: 80%;
+  width: 100%;
   font-size: 0.9rem;
 }
 
@@ -63,6 +63,47 @@ label {
   margin-right: 5px;
 }
 
-.filter-container {
-  margin: 10px;
+.search-filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-box {
+  display: flex;
+}
+
+.search-box button {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  height: 32px;
+  margin: 0;
+  border-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.search-box input {
+  width: 250px;
+  height: 32px;
+  border-style: solid;
+  border-right: none;
+  border-width: 1px;
+  border-radius: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  text-indent: 10px;
+}
+
+.search-box label {
+  margin-right: 1px;
+}
+
+.search-filter-container select {
+  background-color: white;
+  height: 32px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
 }

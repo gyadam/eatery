@@ -103,48 +103,48 @@ export const DataTable = ({ restaurants, states, genres, loading }) => {
 
   return (
     <div className="restaurant-datatable">
-      <form className="search-box" onSubmit={handleSubmit}>
-        <label for="site-search">Search for restaurants:</label>
-        <input
-          type="search"
-          id="restaurant-search"
-          name="search"
-          value={searchInput}
-          onChange={handleChange}
-        ></input>
-        <button>Search</button>
-      </form>
-      <div className="filter-container">
-        <label for="state-filter">Choose a state:</label>
-        <select
-          name="state"
-          id="state-filter"
-          onChange={handleStateFilterChange}
-        >
-          <option value="">All</option>
-          {states.map((state) => (
-            <option value={state.abbreviation}>{state.name}</option>
-          ))}
-        </select>
+      <div className="datatable-header">
+        <div className="search-filter-container">
+          <form className="search-box" onSubmit={handleSubmit}>
+            <label for="site-search"></label>
+            <input
+              type="search"
+              id="restaurant-search"
+              name="search"
+              value={searchInput}
+              onChange={handleChange}
+              placeholder="Search for restaurants"
+            ></input>
+            <button>Search</button>
+          </form>
+          <div className="filter-container">
+            <label for="state-filter">Choose a state:</label>
+            <select
+              name="state"
+              id="state-filter"
+              onChange={handleStateFilterChange}
+            >
+              <option value="">All</option>
+              {states.map((state) => (
+                <option value={state.abbreviation}>{state.name}</option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-container">
+            <label for="genre-filter">Choose a genre:</label>
+            <select
+              name="genre"
+              id="genre-filter"
+              onChange={handleGenreFilterChange}
+            >
+              <option value="">All</option>
+              {genres.map((genre) => (
+                <option value={genre}>{genre}</option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
-      <div className="filter-container">
-        <label for="genre-filter">Choose a genre:</label>
-        <select
-          name="genre"
-          id="genre-filter"
-          onChange={handleGenreFilterChange}
-        >
-          <option value="">All</option>
-          {genres.map((genre) => (
-            <option value={genre}>{genre}</option>
-          ))}
-        </select>
-      </div>
-      <Pagination
-        resultsPerPage={resultsPerPage}
-        totalResults={filteredRestaurants.length}
-        setCurrentPage={setCurrentPage}
-      />
       <table>
         <colgroup>
           <col class="auto-column" />
@@ -164,6 +164,12 @@ export const DataTable = ({ restaurants, states, genres, loading }) => {
         </thead>
         <tbody>{generateRows(paginatedRestaurants)}</tbody>
       </table>
+      <Pagination
+        resultsPerPage={resultsPerPage}
+        totalResults={filteredRestaurants.length}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
