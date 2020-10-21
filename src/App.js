@@ -67,7 +67,12 @@ function App() {
         <h2>Eat. Sleep. Order. Repeat.</h2>
       </header>
       <main>
-        <DataTable restaurants={restaurants} genres={genres} states={states} />
+        <DataTable
+          restaurants={restaurants}
+          genres={genres}
+          states={states}
+          loading={loading}
+        />
       </main>
     </div>
   );

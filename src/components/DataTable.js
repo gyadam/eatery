@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Pagination } from "./Pagination";
 import "../css/table.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
-export const DataTable = ({ restaurants, states, genres }) => {
+export const DataTable = ({ restaurants, states, genres, loading }) => {
   const [stateFilter, setStateFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -91,6 +92,14 @@ export const DataTable = ({ restaurants, states, genres }) => {
 
   const filteredRestaurants = filterResults(restaurants);
   const paginatedRestaurants = paginateResults(filteredRestaurants);
+
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <ClipLoader size={30} color={"#086788"} />
+      </div>
+    );
+  }
 
   return (
     <div className="restaurant-datatable">
