@@ -3,7 +3,7 @@ import React from "react";
 export const Searchbox = ({ handleSubmit, searchInput, handleChange }) => {
   return (
     <form className="search-box" onSubmit={handleSubmit}>
-      <label for="site-search"></label>
+      <label htmlFor="site-search"></label>
       <input
         type="search"
         id="restaurant-search"

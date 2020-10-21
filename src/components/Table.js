@@ -41,11 +41,11 @@ export const Table = ({ paginatedRestaurants, error }) => {
   return (
     <table>
       <colgroup>
-        <col class="auto-column" />
-        <col class="auto-column" />
-        <col class="small-column" />
-        <col class="auto-column" />
-        <col class="large-column" />
+        <col className="auto-column" />
+        <col className="auto-column" />
+        <col className="small-column" />
+        <col className="auto-column" />
+        <col className="large-column" />
       </colgroup>
       <thead>
         <tr>
