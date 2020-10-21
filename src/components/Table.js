@@ -1,6 +1,19 @@
 import React from "react";
 
 export const Table = ({ paginatedRestaurants, error }) => {
+  const unique = (arr) => {
+    const unique = [...new Set(arr)];
+    return unique;
+  };
+
+  const generateTags = (restaurant) => {
+    const tags = restaurant.tags.split(",");
+    const uniqueTags = unique(tags);
+    return uniqueTags.map((tag) => (
+      <span className="tag-container">{tag}</span>
+    ));
+  };
+
   const generateRows = (restaurants) => {
     if (error) {
       return (
@@ -19,7 +32,7 @@ export const Table = ({ paginatedRestaurants, error }) => {
           <td>{splitCommaSeparatedWords(restaurant.city)}</td>
           <td>{restaurant.state}</td>
           <td>{restaurant.telephone}</td>
-          <td>{splitCommaSeparatedWords(restaurant.tags)}</td>
+          <td>{generateTags(restaurant)}</td>
         </tr>
       ));
     } else {

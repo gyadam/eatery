@@ -113,12 +113,19 @@ label {
   margin-right: 1px;
 }
 
+.tag-container {
+  display: inline-block;
+  margin: 3px;
+  padding: 0.35rem 0.7rem;
+  background-color: #08688825;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
 @media (max-width: 1150px) {
   .search-filter-container {
     display: flex;
     flex-direction: column;
-    /* align-items: center;
-    justify-content: space-between; */
   }
 
   .search-box {
