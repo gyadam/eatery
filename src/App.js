@@ -63,8 +63,18 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Eatery</h1>
-        <h2>Eat. Sleep. Order. Repeat.</h2>
+        <h1>
+          <a href="/">Eatery</a>
+        </h1>
+        <h2>Eat. Sleep. Repeat.</h2>
+        <h3>
+          At Eatery, we are revolutionizing the way people eat out. With our
+          blockchain-based, decentralized network of restaurants and
+          cutting-edge AI technology, we are aiming to build the world's first
+          scalable system and create a community of Eaters who all share the
+          same passion of searching for the finest restaurants. Check out our
+          cool new technology in the table below.
+        </h3>
       </header>
       <main>
         <DataTable
@@ -72,6 +82,7 @@ function App() {
           genres={genres}
           states={states}
           loading={loading}
+          error={error}
         />
       </main>
     </div>
