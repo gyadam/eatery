@@ -10,7 +10,9 @@ export const Table = ({ paginatedRestaurants, error }) => {
     const tags = restaurant.tags.split(",");
     const uniqueTags = unique(tags);
     return uniqueTags.map((tag) => (
-      <span className="tag-container">{tag}</span>
+      <span key={tag} className="tag-container">
+        {tag}
+      </span>
     ));
   };
 
