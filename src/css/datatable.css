@@ -2,6 +2,7 @@
   margin: 50px auto;
   text-align: center;
   width: 80%;
+  min-width: 300px;
 }
 
 .restaurant-datatable table {
@@ -123,6 +124,10 @@ label {
 }
 
 @media (max-width: 1150px) {
+  .restaurant-datatable {
+    margin: 20px auto;
+  }
+
   .search-filter-container {
     display: flex;
     flex-direction: column;
@@ -132,7 +137,71 @@ label {
     margin: 10px;
   }
 
+  .search-box input {
+    width: 75%;
+  }
+
   .filter-container {
     margin: 10px;
+  }
+}
+
+@media (max-width: 850px) {
+  .restaurant-datatable table,
+  .restaurant-datatable thead,
+  .restaurant-datatable tbody,
+  .restaurant-datatable th,
+  .restaurant-datatable td,
+  .restaurant-datatable tr {
+    display: block;
+  }
+
+  .restaurant-datatable td {
+    font-size: 1rem;
+    height: auto;
+    padding: 8px 6px;
+  }
+
+  .restaurant-datatable thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td:before {
+    font-size: 0.8rem;
+    display: block;
+    margin: 5px auto;
+  }
+
+  td:nth-of-type(1):before {
+    font-weight: normal;
+    content: "Name";
+  }
+  td:nth-of-type(2):before {
+    content: "City";
+  }
+  td:nth-of-type(3):before {
+    content: "State";
+  }
+  td:nth-of-type(4):before {
+    content: "Phone number";
+  }
+  td:nth-of-type(5):before {
+    content: "Genres";
+  }
+
+  label {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .restaurant-datatable tbody td:first-child:not(.no-results):not(.error-row) {
+    font-size: 1.2rem;
+  }
+
+  .tag-container {
+    font-size: 0.6rem;
   }
 }

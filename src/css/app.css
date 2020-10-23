@@ -23,3 +23,9 @@
   position: relative;
   top: 250px;
 }
+
+@media (max-width: 1150px) {
+  .app-header h3 {
+    width: 80%;
+  }
+}
