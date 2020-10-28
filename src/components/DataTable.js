@@ -60,7 +60,7 @@ export const DataTable = ({ restaurants, states, genres, loading, error }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchFilter(searchInput);
+    setSearchFilter(searchInput.toLowerCase());
     setCurrentPage(1);
   };
 
