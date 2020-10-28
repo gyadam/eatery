@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataTable } from "./components/DataTable";
 import "./css/app.css";
-import "dotenv/config";
 const states = require("./states.json");
 
 function App() {
