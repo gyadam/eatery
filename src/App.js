@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataTable } from "./components/DataTable";
 import "./css/app.css";
+require("dotenv").config();
 const states = require("./states.json");
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
       try {
         const response = await fetch(url, {
           headers: {
-            Authorization: "Api-Key q3MNxtfep8Gt",
+            Authorization: `Api-Key ${process.env.REACT_APP_API_KEY}`,
           },
         });
         handleErrors(response);
